@@ -25,40 +25,43 @@
 package com.wandrell.example.swss.testing.util.config.properties;
 
 /**
- * Configuration class for the test SOAP messages properties files.
+ * Configuration class for the XWSS-based test endpoints properties files paths.
  * <p>
- * Each file contains the information for finding or generating test SOAP
- * messages.
+ * These files contain the data required for setting up an endpoint context.
  *
  * @author Bernardo Martínez Garrido
  */
-public final class SOAPPropertiesConfig {
+public final class EndpointXWSSPropertiesPaths {
 
     /**
-     * Properties file with the encrypted SOAP test data.
+     * Properties file with the base endpoint configuration.
      */
-    public static final String ENCRYPTION      = "classpath:config/soap/test-soap-encryption.properties";
+    public static final String BASE            = "classpath:context/endpoint/endpoint.properties";
     /**
-     * Properties file with the digested password SOAP test data.
+     * Properties file with the encrypted endpoint configuration.
      */
-    public static final String PASSWORD_DIGEST = "classpath:config/soap/test-soap-password-digest.properties";
+    public static final String ENCRYPTION      = "classpath:context/endpoint/encryption/xwss/endpoint-encryption-xwss.properties";
     /**
-     * Properties file with the plain password SOAP test data.
+     * Properties file with the digested password endpoint configuration.
      */
-    public static final String PASSWORD_PLAIN  = "classpath:config/soap/test-soap-password-plain.properties";
+    public static final String PASSWORD_DIGEST = "classpath:context/endpoint/password/digest/xwss/endpoint-password-digest-xwss.properties";
     /**
-     * Properties file with the signature SOAP test data.
+     * Properties file with the plain password endpoint configuration.
      */
-    public static final String SIGNATURE       = "classpath:config/soap/test-soap-signature.properties";
+    public static final String PASSWORD_PLAIN  = "classpath:context/endpoint/password/plain/xwss/endpoint-password-plain-xwss.properties";
     /**
-     * Properties file with the unsecure SOAP test data.
+     * Properties file with the signed endpoint configuration.
      */
-    public static final String UNSECURE        = "classpath:config/soap/test-soap-unsecure.properties";
+    public static final String SIGNATURE       = "classpath:context/endpoint/signature/xwss/endpoint-signature-xwss.properties";
+    /**
+     * Properties file with the unsecure endpoint configuration.
+     */
+    public static final String UNSECURE        = "classpath:context/endpoint/endpoint-unsecure.properties";
 
     /**
      * Private constructor to avoid initialization.
      */
-    private SOAPPropertiesConfig() {
+    private EndpointXWSSPropertiesPaths() {
         super();
     }
 

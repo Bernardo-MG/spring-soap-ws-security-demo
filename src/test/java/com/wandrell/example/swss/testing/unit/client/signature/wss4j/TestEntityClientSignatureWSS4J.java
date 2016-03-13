@@ -22,30 +22,35 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.swss.service.data;
+package com.wandrell.example.swss.testing.unit.client.signature.wss4j;
 
-import com.wandrell.example.swss.model.ExampleEntity;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+import com.wandrell.example.swss.testing.util.config.context.ClientWSS4JContextPaths;
+import com.wandrell.example.swss.testing.util.config.context.TestContextPaths;
+import com.wandrell.example.swss.testing.util.config.properties.SOAPPropertiesPaths;
+import com.wandrell.example.swss.testing.util.config.properties.TestPropertiesPaths;
+import com.wandrell.example.swss.testing.util.test.unit.client.AbstractTestEntityClientHeader;
 
 /**
- * Service for accessing {@link ExampleEntity} instances.
- * <p>
- * It just allows finding an entity by the id, which is required for the
- * endpoint.
+ * Implementation of {@code AbstractTestEntityClientHeader} for a WSS4J signed
+ * client.
  *
  * @author Bernardo Martínez Garrido
  */
-public interface ExampleEntityAccessService {
+@ContextConfiguration(locations = { ClientWSS4JContextPaths.SIGNATURE,
+        TestContextPaths.KEYSTORE, TestContextPaths.KEYSTORE_WSS4J })
+@TestPropertySource({ TestPropertiesPaths.ENTITY, TestPropertiesPaths.WSDL,
+        SOAPPropertiesPaths.UNSECURE, SOAPPropertiesPaths.SIGNATURE })
+public final class TestEntityClientSignatureWSS4J
+        extends AbstractTestEntityClientHeader {
 
     /**
-     * Returns a {@code ExampleEntity} with the given id.
-     * <p>
-     * If no instance exists with that id then the value {@code null} is
-     * returned.
-     *
-     * @param identifier
-     *            identifier of the {@code ExampleEntity} to find
-     * @return the {@code ExampleEntity} with the given id or {@code null}
+     * Constructs a {@code TestEntityClientSignatureWSS4J}.
      */
-    public ExampleEntity findById(final Integer identifier);
+    public TestEntityClientSignatureWSS4J() {
+        super();
+    }
 
 }

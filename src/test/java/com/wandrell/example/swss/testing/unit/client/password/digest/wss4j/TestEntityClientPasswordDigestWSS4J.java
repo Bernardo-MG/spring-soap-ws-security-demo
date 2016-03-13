@@ -22,35 +22,33 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.swss.testing.util.config.context;
+package com.wandrell.example.swss.testing.unit.client.password.digest.wss4j;
+
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+import com.wandrell.example.swss.testing.util.config.context.ClientWSS4JContextPaths;
+import com.wandrell.example.swss.testing.util.config.properties.SOAPPropertiesPaths;
+import com.wandrell.example.swss.testing.util.config.properties.TestPropertiesPaths;
+import com.wandrell.example.swss.testing.util.test.unit.client.AbstractTestEntityClientHeader;
 
 /**
- * Configuration class for the test context files.
- * <p>
- * These are generic small context configurations required in some tests.
+ * Implementation of {@code AbstractTestEntityClientHeader} for a WSS4J digested
+ * password protected client.
  *
  * @author Bernardo Martínez Garrido
  */
-public final class TestContextConfig {
+@ContextConfiguration(locations = { ClientWSS4JContextPaths.PASSWORD_DIGEST })
+@TestPropertySource({ TestPropertiesPaths.ENTITY, TestPropertiesPaths.WSDL,
+        SOAPPropertiesPaths.UNSECURE, SOAPPropertiesPaths.PASSWORD_DIGEST,
+        TestPropertiesPaths.USER })
+public final class TestEntityClientPasswordDigestWSS4J
+        extends AbstractTestEntityClientHeader {
 
     /**
-     * Default context file.
-     * <p>
-     * For those test which don't need any context configuration but require
-     * loading Spring properties.
+     * Constructs a {@code TestEntityClientPasswordDigestWSS4J}.
      */
-    public static final String DEFAULT  = "classpath:context/test-default.xml";
-    /**
-     * Key stores context file.
-     * <p>
-     * Contains the configuration for the basic Java key stores.
-     */
-    public static final String KEYSTORE = "classpath:context/keystore/keystore.xml";
-
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private TestContextConfig() {
+    public TestEntityClientPasswordDigestWSS4J() {
         super();
     }
 
